@@ -13,11 +13,11 @@ Catalyst::View::XML::Hash::LX - Serialize the stash as XML using XML::Hash::LX
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -48,7 +48,7 @@ See L<Catalyst::View::process>
 sub process {
     my ($self, $c) = @_;
 
-    my $encoding = $c->stash->{encoding} // 'utf-8';
+    my $encoding = exists $c->stash->{encoding} ? $c->stash->{encoding} : 'utf-8';
 
     my $content = hash2xml $c->stash->{response}, encoding => $encoding;
 
